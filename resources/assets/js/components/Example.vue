@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -18,7 +18,7 @@
 export default {
     mounted() {
         console.log('Component mounted.')
-    }
+    },
 
     data() {
         return {

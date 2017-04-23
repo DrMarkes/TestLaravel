@@ -8,7 +8,7 @@
                 @if($page)
                 <div class="panel-heading">{{ $page->name }}</div>
 
-                <div class="panel-body">
+    <div class="panel-body">
                     <p>{{ $page->text }}</p>
                 </div>
 

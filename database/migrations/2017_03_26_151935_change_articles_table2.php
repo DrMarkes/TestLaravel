@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ChangeArticlesTable2 extends Migration
 {
@@ -14,9 +14,11 @@ class ChangeArticlesTable2 extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            
+
             $table->string('alias')->default('alias')->change();
-            
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

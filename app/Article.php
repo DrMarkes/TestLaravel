@@ -29,14 +29,20 @@ class Article extends Model
     use SoftDeletes;
 
     protected $fillable = [
+
         'name',
         'text',
-        'img'
-    ];
+        'img',
 
+    ];
     protected $dates = ['deleted_at'];
 
-    public function user() {
+    /**
+     * [user description]
+     * @return [type] [description]
+     */
+    public function user()
+    {
 
         return $this->belongsTo('App\User');
     }
