@@ -18,7 +18,7 @@
         </div>
         @endif
 
-        <form method="post" action="{{ route('contact') }}">
+        <form method="post" action="{{ route('store_contact') }}">
 
             {{ csrf_field() }}
             <div class="form-group">

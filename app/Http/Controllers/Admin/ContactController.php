@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -14,21 +14,35 @@ class ContactController extends Controller
     //        $this->request = $request;
     //    }
 
-    public function show(Request $request, $id = false)
+    public function store(ContactRequest $request)
+    {
+        return view('contact')->withTitle('Contacts');
+    }
+
+    public function show()
     {
 
         // print_r($request->all());
 
-        if ($request->isMethod('post')) {
-            $rules = [
-                'name' => 'after:tomorrow',
-                // 'email' => 'required|email',
-            ];
+        // if ($request->isMethod('post')) {
+        /*$rules = [
+        'name' => 'after:tomorrow',
+        // 'email' => 'required|email',
+        ];
 
-            $this->validate($request, $rules);
+        $this->validate($request, $rules);
 
-            dump($request->all());
-        }
+        dump($request->all());*/
+
+        /*$messages = [];
+
+        $validator = Validator::make($request->all(), ['name' => 'required'], $messages);
+
+        if ($validator->fails()) {
+        return redirect()->route('contact')->withErrors($validator)->withInput();
+        }*/
+
+        // }
 
         // echo '<h2>' . $id . '</h2>';
 

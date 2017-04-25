@@ -28,9 +28,14 @@ Route::get('/articles', [
 
 Auth::routes();
 
-Route::match(['get', 'post'], '/contact/{id?}', [
+Route::get('/contact/', [
     'uses' => 'Admin\ContactController@show',
     'as'   => 'contact',
+]);
+
+Route::post('/contact/', [
+    'uses' => 'Admin\ContactController@store',
+    'as'   => 'store_contact',
 ]);
 
 Route::get('/show', [
