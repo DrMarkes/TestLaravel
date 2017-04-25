@@ -46,7 +46,12 @@
                         <li class="{{ Route::is('about') ? 'active' : '' }}">
                             <a href="{{ route('about') }}">About</a></li>
                     </ul>
-                    
+
+                    <ul class="nav navbar-nav">
+                        <li class="{{ Route::is('contact') ? 'active' : '' }}">
+                            <a href="{{ route('contact') }}">Contacts</a></li>
+                    </ul>
+
                     <ul class="nav navbar-nav">
                         <li class="{{ Route::is('articles') ? 'active' : '' }}">
                             <a href="{{ route('articles') }}">Articles</a></li>

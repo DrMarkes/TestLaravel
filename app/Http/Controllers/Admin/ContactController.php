@@ -2,23 +2,36 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class ContactController extends Controller {
-    
+class ContactController extends Controller
+{
+
 //    protected $request;
-//
-//    public function __construct(Request $request, $id) {
-//        $this->request = $request;
-//    }
+    //
+    //    public function __construct(Request $request, $id) {
+    //        $this->request = $request;
+    //    }
 
-        public function show(Request $request, $id = FALSE) {
-        
-        print_r($request->all());
-        
-        echo '<h2>'.$id.'</h2>';
-         
+    public function show(Request $request, $id = false)
+    {
+
+        // print_r($request->all());
+
+        if ($request->isMethod('post')) {
+            $rules = [
+                'name' => 'after:tomorrow',
+                // 'email' => 'required|email',
+            ];
+
+            $this->validate($request, $rules);
+
+            dump($request->all());
+        }
+
+        // echo '<h2>' . $id . '</h2>';
+
         return view('contact')->withTitle('Contact');
     }
 }
