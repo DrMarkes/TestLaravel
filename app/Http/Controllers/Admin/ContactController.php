@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactRequest;
+use Illuminate\Http\Request;
+use Validator;
 
 class ContactController extends Controller
 {
@@ -14,8 +15,39 @@ class ContactController extends Controller
     //        $this->request = $request;
     //    }
 
-    public function store(ContactRequest $request)
+    public function store(Request $request)
     {
+        $messages = [
+            'name.required' => 'ПОЛЕ :attribute обязательно к заполнению',
+            'email.max'     => 'максимально количество символов - :max',
+        ];
+
+        $rules = [
+            'name' => 'required',
+            // 'email' => 'sometimes | required | max: 10',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        /*$validator->after(function ($validator) {
+
+        $validator->errors()->add('name', 'дополнительное сообщение');
+
+        });*/
+
+        $validator->sometimes('email', 'required', function ($input) {
+            // dump($input);
+            return strlen($input->name) >= 10;
+        });
+
+        if ($validator->fails()) {
+            $messages = $validator->errors();
+            // dump($messages->all("<p> :message </p>"));
+            // return redirect()->route('contact')->withErrors($validator)->withInput();
+
+            dump($validator->failed());
+        }
+
         return view('contact')->withTitle('Contacts');
     }
 
