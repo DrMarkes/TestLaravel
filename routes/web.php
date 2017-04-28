@@ -28,12 +28,12 @@ Route::get('/articles', [
 
 Auth::routes();
 
-Route::get('/contact/', [
+Route::get('/contact', [
     'uses' => 'Admin\ContactController@show',
     'as'   => 'contact',
 ]);
 
-Route::post('/contact/', [
+Route::post('/contact', [
     'uses' => 'Admin\ContactController@store',
     'as'   => 'store_contact',
 ]);
@@ -47,3 +47,7 @@ Route::get('/about', [
     'uses' => 'AboutController@show',
     'as'   => 'about',
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
