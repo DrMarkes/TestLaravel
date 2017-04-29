@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
-use Auth;
 
 class AdminController extends Controller
 {
@@ -15,22 +13,22 @@ class AdminController extends Controller
 
     public function show()
     {
-        $user = Auth::user();
+        /*$user = Auth::user();
 
         if (!Auth::check()) {
 
-            $user = User::find(9);
+        $user = User::find(9);
 
-            Auth::login($user);
+        Auth::login($user);
 
-            // return redirect('/login');
+        // return redirect('/login');
         }
 
         if (Auth::viaRemember()) {
-            echo "Authenticate with remember";
+        echo "Authenticate with remember";
         }
 
-        dump($user);
+        dump($user);*/
 
         return view('home');
     }

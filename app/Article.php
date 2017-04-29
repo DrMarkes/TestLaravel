@@ -37,9 +37,9 @@ class Article extends Model
     ];
     protected $dates = ['deleted_at'];
 
-    protected $casts = [
-        'text' => 'array',
-    ];
+    /*protected $casts = [
+    'text' => 'array',
+    ];*/
 
     /**
      * [user description]
@@ -47,19 +47,18 @@ class Article extends Model
      */
     public function user()
     {
-
         return $this->belongsTo('App\User');
     }
 
-    public function getNameAttribute($value)
+    /*public function getNameAttribute($value)
     {
-        return 'Hello World ' . $value . ' !';
-    }
+    return 'Hello World ' . $value . ' !';
+    }*/
 
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = ' | ' . $value . ' | ';
+    /*public function setNameAttribute($value)
+{
+$this->attributes['name'] = ' | ' . $value . ' | ';
 
-        return;
-    }
+return;
+}*/
 }

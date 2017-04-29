@@ -48,17 +48,17 @@ Route::get('/about', [
 
 Auth::routes();
 
-Route::get('/login', [
-    'uses' => 'Auth\MyAuthController@showLogin',
-    'as'   => 'login',
+/*Route::get('/login', [
+'uses' => 'Auth\MyAuthController@showLogin',
+'as'   => 'login',
 ]);
-Route::post('/login', ['uses' => 'Auth\MyAuthController@authenticate']);
+Route::post('/login', ['uses' => 'Auth\MyAuthController@authenticate']);*/
 
 Route::get('/home', 'HomeController@index');
 
 Route::group([
     'prefix'     => 'admin',
-    'middleware' => 'auth.basic',
+    'middleware' => 'auth',
 ], function () {
 
     Route::get('/', [
@@ -67,7 +67,22 @@ Route::group([
     ]);
 
     Route::get('/add/post', [
-        'uses' => 'Admin\AdminPostController@create',
+        'uses' => 'Admin\AdminPostController@show',
         'as'   => 'admin_add_post',
+    ]);
+
+    Route::post('/add/post', [
+        'uses' => 'Admin\AdminPostController@create',
+        'as'   => 'admin_add_post_p',
+    ]);
+
+    Route::get('/update/post/{article}', [
+        'uses' => 'Admin\AdminUpdatePostController@show',
+        'as'   => 'admin_update_post',
+    ]);
+
+    Route::post('/update/post', [
+        'uses' => 'Admin\AdminUpdatePostController@create',
+        'as'   => 'admin_update_post_p',
     ]);
 });
