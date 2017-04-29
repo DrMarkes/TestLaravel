@@ -8,6 +8,6 @@ class AdminPostController extends Controller
 {
     public function create()
     {
-
+        return view('home');
     }
 }

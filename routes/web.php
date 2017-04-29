@@ -48,11 +48,17 @@ Route::get('/about', [
 
 Auth::routes();
 
+Route::get('/login', [
+    'uses' => 'Auth\MyAuthController@showLogin',
+    'as'   => 'login',
+]);
+Route::post('/login', ['uses' => 'Auth\MyAuthController@authenticate']);
+
 Route::get('/home', 'HomeController@index');
 
 Route::group([
     'prefix'     => 'admin',
-    'middleware' => 'auth',
+    'middleware' => 'auth.basic',
 ], function () {
 
     Route::get('/', [
