@@ -26,8 +26,6 @@ Route::get('/articles', [
     'as'   => 'articles',
 ]);
 
-Auth::routes();
-
 Route::get('/contact', [
     'uses' => 'Admin\ContactController@show',
     'as'   => 'contact',
@@ -51,3 +49,19 @@ Route::get('/about', [
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group([
+    'prefix'     => 'admin',
+    'middleware' => 'auth',
+], function () {
+
+    Route::get('/', [
+        'uses' => 'Admin\AdminController@show',
+        'as'   => 'admin_index',
+    ]);
+
+    Route::get('/add/post', [
+        'uses' => 'Admin\AdminPostController@create',
+        'as'   => 'admin_add_post',
+    ]);
+});

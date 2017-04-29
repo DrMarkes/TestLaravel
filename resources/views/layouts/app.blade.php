@@ -42,6 +42,13 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
+
+                    <ul class="nav navbar-nav">
+                        <li class="{{ (url()->current() == url()->to('admin')) ? 'active' : '' }}">
+                            <a href="{{ url('admin') }}">Admin</a>
+                        </li>
+                    </ul>
+
                     <ul class="nav navbar-nav">
                         <li class="{{ Route::is('about') ? 'active' : '' }}">
                             <a href="{{ route('about') }}">About</a></li>
